@@ -1,2 +1,8 @@
 ^codinglab\.Rproj$
 ^\.Rproj\.user$
+^inst/tutorials/basic-syntax/basic-syntax\.Rmd$
+^inst/tutorials/reading-files/reading-files\.Rmd$
+^inst/tutorials/if-statements/if-statements\.Rmd$
+^inst/tutorials/loops/loops\.Rmd$
+^inst/tutorials/functions/functions\.Rmd$
+^README\.Rmd$
