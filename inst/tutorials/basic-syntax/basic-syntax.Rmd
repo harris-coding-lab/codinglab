@@ -1,74 +1,239 @@
 ---
 title: "Basic Syntax and Operators"
-output: learnr::tutorial
+output: 
+  learnr::tutorial:
+    allow_skip: true
 runtime: shiny_prerendered
 ---
 
 ```{r setup, include=FALSE}
 library(learnr)
 knitr::opts_chunk$set(echo = FALSE)
+set.seed(1)
+random_numbers <- rf(1000, 10, 100)
+```
+
+## Calculating Mean and Standard Deviation
+
+### Calculating the Mean
+We can run the following code to create a vector of 1000 random numbers. The function `set.seed()` ensures that the process used to generate random numbers is the same across computers.
+
+```{r random-numbers-setup, echo=TRUE, eval=TRUE}
+set.seed(1)
+random_numbers <- rf(1000, 10, 100)
+```
+
+Write a function that gives you the sum of `random_numbers` and saves it to a new variable called `numbers_sum`:
+
+```{r sum, exercise=TRUE, exercise.setup}
+
+```
+
+Write a function that gives you the number of items in the `random_numbers` vector and saves it to a new variable called `numbers_count`:
+```{r count, exercise=TRUE}
+
+```
+
+<div id="count-hint">
+**Hint:** To count the number of items in a vector, use the `length()` function.
+</div>
+
+Now write a function that uses the above two functions to calculate the average of `random_numbers` and assign it to a new variable called `this_mean`. 
+
+```{r mean, exercise=TRUE}
+
+```
+
+```{r question-mean}
+question("What number do you get for the mean of `random_numbers`?",
+  answer("1000"),
+  answer("1018"),
+  answer("1.018", correct = TRUE),
+  answer("0.982"),
+  allow_retry = TRUE
+)
+```
+
+R actually has a built in function to calculate mean for you, so you don't have to remember how to build it from scratch each time! Check your above answer by using the `mean()` function on the `random_numbers` vector.
+```{r mean2, exercise=TRUE}
+
+```
+
+### Calculating the Standard Deviation
+
+The formula for calculating standard deviation is as follows:
+
+$s^2 = \sqrt{\sum_{i=1}^n (y_i - \bar{y})^2} / n-1$
+
+Can you convert this into code? 
+
+We'll introduce a new concept, *vectorization*. This means that an operation like subtracting will act on all numbers in a vector at the same time.
+
+Subtract `this_mean` from the `random_numbers` vector. Did each number in `random_numbers` change?
+```{r sd-vector, exercise=TRUE}
+
+```
+
+[Insert more content here]
+
+```{r question-sd}
+question("What number do you get for the standard deviation of `random_numbers`?",
+  answer("0.489704", correct = TRUE),
+  answer("1018"),
+  answer("1.018"),
+  answer("0.982"),
+  allow_retry = TRUE
+)
+```
+
+Check if you calculated the standard deviation correctly by using the `sd()` function on the `random_numbers` vector.
+```{r sd2, exercise=TRUE}
+
+```
+
+### Making a Histogram of Our Numbers
+
+What do these random numbers look like, anyway? We can use an R package called ggplot2 to visualize the distribution of our random numbers.
+
+Run the following code to visualize the original distribution of `random_numbers`.
+```{r viz, exercise=TRUE}
+hist(random_numbers)
+```
+
+Notice how most of the values are concentrated on the left-hand side of the graph, while there is a longer "tail" to the right? Counterintuitively, this is known as a right-skewed distribution. When we see a distribution like this, one common thing to do is to normalize it.
+
+This is also known as *calculating a z-score*, which we will cover next.
+
+## Calculating a Z-Score
+
+```{r z-scores-setup}
+set.seed(1)
+random_numbers <- rf(1000, 10, 100)
+this_mean <- mean(random_numbers)
+this_sd <- sd(random_numbers)
+```
+
+The formula for calculating a z-score is as follows:
+
+$x_i - x_bar / sd$
+
+This can be calculated for each value in `random_numbers` in context of the larger set of values.
+
+Can you translate this formula into code?
+
+Assume `random_numbers`, `this_mean`, and `this_sd` are in your environment. Write a formula to transform `random_numbers` into z-scores, and assign it to the new variable `normalized_data`.
+```{r norm-data, exercise=TRUE, exercise.setup = "z-scores-setup"}
+
+```
+
+```{r norm-setup, exercise.setup = "z-scores-setup"}
+normalized_data <- (random_numbers - this_mean) / this_sd
+```
+
+Take the mean of `normalized_data` and assign it to a variable called `normalized_mean`.
+```{r norm-mean, exercise=TRUE, exercise.setup = "norm-setup"}
+
+```
+
+Take the standard deviation of `normalized_data` and assign it to a variable called `normalized_sd`.
+```{r norm-sd, exercise=TRUE, exercise.setup = "norm-setup"}
+
 ```
 
 
-## Topic 1
+```{r question-normalized}
+question("What is the value of `normalized_mean`? What is the value of `normalized_sd`?",
+  answer("`normalized_mean` is 0, and `normalized_sd` is 1", correct = TRUE),
+  answer("`normalized_mean` is 0, and `normalized_sd` is 0.489704"),
+  answer("`normalized_mean` is 1.018126, and `normalized_sd` is 1"),
+  answer("`normalized_mean` is 1.018126, and `normalized_sd` is 0.489704"),
+  allow_retry = TRUE
+)
+```
 
-### Exercise 
+### Making a Histogram of Z-scores
 
-*Here's a simple exercise with an empty code chunk provided for entering the answer.*
+Let's plot the Z-scores and see if our values are still skewed!
 
-Write the R code required to add two plus two:
+```{r viz2, exercise=TRUE, , exercise.setup = "norm-setup"}
+hist(normalized_data)
+```
 
-```{r two-plus-two, exercise=TRUE}
+```{r question-skewed}
+question("Is this data skewed?",
+  answer("Yes, it is right-skewed", correct = TRUE),
+  answer("Yes, it is left-skewed"),
+  answer("No, this data is not skewed"),
+  allow_retry = TRUE
+)
+```
+
+## Calculating a T-Score
+
+T-tests are used to determine if two sample means are equal. The formula for calculating a t-score is as follows: 
+
+$(mu_1 - mu_2) / sqrt(s_1/n_1 + s_2/n_2)$
+
+where $mu_i$ is the mean of the first or second set of data, $s_i$ is the sample standard deviation of the ith set of data, and $n_i$ is the sample size of the $i$th set of data.
+
+We'll first create two data sets of random numbers following a normal distribution:
+
+```{r echo=TRUE, eval=TRUE}
+data_1 <- rnorm(1000, 3)
+data_2 <- rnorm(100, 2)
+```
+
+Here's how we'll calculate the values for the first data set:
+
+```{r echo=TRUE, eval=TRUE}
+mu_1 <- mean(data_1)
+s_1 <- sd(data_1)^2
+n_1 <- length(data_1)
+```
+
+Can you do the same for `data_2`?
+
+```{r data2, exercise=TRUE}
+```
+
+```{r t-score-setup}
+mu_2 <- mean(data_2)
+s_2 <- sd(data_2)^2
+n_2 <- length(data_2)
+```
+
+Now, can you translate the t-score formula into code?
+
+```{r t_score, exercise=TRUE, exercise.setup = "t-score-setup"}
 
 ```
 
-### Exercise with Code
-
-*Here's an exercise with some prepopulated code as well as `exercise.lines = 5` to provide a bit more initial room to work.*
-
-Now write a function that adds any two numbers and then call it:
-
-```{r add-function, exercise=TRUE, exercise.lines = 5}
-add <- function() {
-  
-}
+```{r question-tscore}
+question("What did you get for the t-score?",
+  answer("77.897"),
+  answer("8.998", correct = TRUE),
+  answer("32.662"),
+  answer("-13.540"),
+  allow_retry = TRUE
+)
 ```
 
-## Topic 2
+The t-score's meaning depends on your sample sizes, but in general t-scores close to 0 imply that the means are not statistically distinguishable and large t-scores (e.g. t > 3) imply the data have different means.
 
-### Exercise with Hint
+## Performing a T-Test
 
-*Here's an exercise where the chunk is pre-evaulated via the `exercise.eval` option (so the user can see the default output we'd like them to customize). We also add a "hint" to the correct solution via the chunk immediate below labeled `print-limit-hint`.*
+Once again, R has a built in function that will perform a T-test for us, aptly named `t.test()`. Look up the arguments the function `t.test()` takes, and perform a T-test on `data_1` and `data_2`.
 
-Modify the following code to limit the number of rows printed to 5:
+```{r t_test, exercise=TRUE, exercise.setup = "t-score-setup"}
 
-```{r print-limit, exercise=TRUE, exercise.eval=TRUE}
-mtcars
 ```
 
-```{r print-limit-hint}
-head(mtcars)
-```
-
-### Quiz
-
-*You can include any number of single or multiple choice questions as a quiz. Use the `question` function to define a question and the `quiz` function for grouping multiple questions together.*
-
-Some questions to verify that you understand the purposes of various base and recommended R packages:
-
-```{r quiz}
-quiz(
-  question("Which package contains functions for installing other R packages?",
-    answer("base"),
-    answer("tools"),
-    answer("utils", correct = TRUE),
-    answer("codetools")
-  ),
-  question("Which of the R packages listed below are used to create plots?",
-    answer("lattice", correct = TRUE),
-    answer("tools"),
-    answer("stats"),
-    answer("grid", correct = TRUE)
-  )
+```{r question-ttest}
+question("What are the sample means, and are they distinguishable from each other?",
+  answer("The mean of `data_1` is 1.904, the mean of `data_2` is 2.943, and they are not distinguishable from each other."),
+  answer("The mean of `data_1` is 1.904, the mean of `data_2` is 2.943, and they are distinguishable from each other."),
+  answer("The mean of `data_1` is 2.943, the mean of `data_2` is 1.904, and they are not distinguishable from each other."),
+  answer("The mean of `data_1` is 2.943, the mean of `data_2` is 1.904, and they are distinguishable from each other.", correct = TRUE),
+  allow_retry = TRUE
 )
 ```
