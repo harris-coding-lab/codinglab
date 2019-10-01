@@ -22,7 +22,7 @@ You can install the development version of codinglab from
 devtools::install_github("harris-coding-lab/codinglab")
 ```
 
-## Running Tutorials
+## Running Tutorials - note: does not currently work
 
 To run a tutorial in this package, install the codinglab package, then
 use the learnr function `run_tutorial` to launch the interactive
