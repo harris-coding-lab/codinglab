@@ -95,10 +95,10 @@ R actually has a built in function to calculate mean for you, so you don’t hav
 <p><span class="math inline">\(s = \sqrt{\frac{\sum_{i=1}^n (x_i - \overline{x})^2} {n-1}}\)</span></p>
 <p>For this, we’ll review the concept of <em>vectorization</em>. This means that an operation like subtraction will act on all numbers in a vector at the same time.</p>
 Subtract <code>this_mean</code> from the <code>random_numbers</code> vector. Did each number in <code>random_numbers</code> change?
-<div class="tutorial-exercise-support" data-label="sd-vector-setup" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<div class="tutorial-exercise-support" data-label="sdvector-setup" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code>this_mean &lt;- mean(random_numbers)</code></pre>
 </div>
-<div class="tutorial-exercise" data-label="sd-vector" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<div class="tutorial-exercise" data-label="sdvector" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
 </div>
 Try to write the formula for standard deviation in R code using the <code>sqrt()</code>, <code>sum()</code>, and <code>length()</code> functions, along with other operators (<code>^</code>, <code>/</code>, <code>-</code>). Assign it to a new variable called <code>this_sd</code>.
@@ -335,9 +335,9 @@ output$`tutorial-exercise-mean2-output` <- renderUI({
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-sd-vector-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-sd-vector-code-editor`)), session)
-output$`tutorial-exercise-sd-vector-output` <- renderUI({
-  `tutorial-exercise-sd-vector-result`()
+`tutorial-exercise-sdvector-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-sdvector-code-editor`)), session)
+output$`tutorial-exercise-sdvector-output` <- renderUI({
+  `tutorial-exercise-sdvector-result`()
 })
 </script>
  

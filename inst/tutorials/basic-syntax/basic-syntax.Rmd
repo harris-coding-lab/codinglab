@@ -81,11 +81,11 @@ $s = \sqrt{\frac{\sum_{i=1}^n (x_i - \overline{x})^2} {n-1}}$
 For this, we'll review the concept of *vectorization*. This means that an operation like subtraction will act on all numbers in a vector at the same time.
 
 Subtract `this_mean` from the `random_numbers` vector. Did each number in `random_numbers` change?
-```{r sd-vector-setup}
+```{r sdvector-setup}
 this_mean <- mean(random_numbers)
 ```
 
-```{r sd-vector, exercise=TRUE}
+```{r sdvector, exercise=TRUE}
 
 ```
 
