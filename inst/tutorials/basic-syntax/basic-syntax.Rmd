@@ -25,7 +25,7 @@ set.seed(1)
 random_numbers <- rf(1000, 10, 100)
 ```
 
-Write a function that gives you the sum of `random_numbers` and saves it to a new variable called `numbers_sum`:
+Write code that gives you the sum of `random_numbers` and saves it to a new variable called `numbers_sum`:
 
 ```{r sum, exercise=TRUE}
 
@@ -33,7 +33,7 @@ Write a function that gives you the sum of `random_numbers` and saves it to a ne
 
 **Note**: You don't automatically see the output of `numbers_sum` when you assign it to a variable. Type `numbers_sum` into the console and run it to see the value that you assigned it.
 
-Write a function that gives you the number of items in the `random_numbers` vector and saves it to a new variable called `numbers_count`:
+Write code that gives you the number of items in the `random_numbers` vector and saves it to a new variable called `numbers_count`:
 ```{r count, exercise=TRUE}
 
 ```
@@ -42,7 +42,14 @@ Write a function that gives you the number of items in the `random_numbers` vect
 **Hint:** To count the number of items in a vector, use the `length()` function.
 </div>
 
-Now write a function that uses the above two functions to calculate the average of `random_numbers` and assign it to a new variable called `this_mean`. 
+Now write code that uses the above two variables to calculate the average of `random_numbers` and assign it to a new variable called `this_mean`. 
+
+```{r mean-setup}
+set.seed(1)
+random_numbers <- rf(1000, 10, 100)
+numbers_sum <- sum(random_numbers)
+numbers_count <- length(random_numbers)
+```
 
 ```{r mean, exercise=TRUE}
 
@@ -78,7 +85,7 @@ Subtract `this_mean` from the `random_numbers` vector. Did each number in `rando
 
 ```
 
-Try to write the formula for standard deviation in R code using the `sqrt()`, `sum()`, and `length()` functions, along with other operators. Assign it to a new variable called `this_sd`.
+Try to write the formula for standard deviation in R code using the `sqrt()`, `sum()`, and `length()` functions, along with other operators (`^`, `/`, `-`). Assign it to a new variable called `this_sd`.
 ```{r sd, exercise=TRUE}
 
 ```
