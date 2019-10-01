@@ -275,10 +275,10 @@ Can you calculate the same values for `data_2`, assigning mean, standard deviati
 
 ```{r question-x2}
 question("What values do you get for `x_2` and `s_2`?",
-  answer("x_2 is 1.975, s_2 is 0.932"),
+  answer("x_2 is 1.990, s_2 is 0.932"),
   answer("x_2 is 1.975, s_2 is 0.946"),
-  answer("x_2 is 1.975, s_2 is 0.965", correct = TRUE),
-  answer("x_2 is 1.577, s_2 is 0.965"),
+  answer("x_2 is 1.990, s_2 is 1.030", correct = TRUE),
+  answer("x_2 is 1.190, s_2 is 1.030"),
   allow_retry = TRUE
 )
 ```
