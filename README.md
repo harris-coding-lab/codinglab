@@ -33,7 +33,7 @@ library(codinglab)
 library(learnr)
 
 # Run the first tutorial
-run_tutorial("basic-syntax", package = "coding-lab")
+run_tutorial("basic-syntax", package = "codinglab")
 ```
 
 The tutorials in order are:
