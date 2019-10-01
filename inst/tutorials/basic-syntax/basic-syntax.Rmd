@@ -81,6 +81,10 @@ $s = \sqrt{\frac{\sum_{i=1}^n (x_i - \overline{x})^2} {n-1}}$
 For this, we'll review the concept of *vectorization*. This means that an operation like subtraction will act on all numbers in a vector at the same time.
 
 Subtract `this_mean` from the `random_numbers` vector. Did each number in `random_numbers` change?
+```{r sd-vector-setup}
+this_mean <- mean(random_numbers)
+```
+
 ```{r sd-vector, exercise=TRUE}
 
 ```
@@ -320,3 +324,5 @@ question("What are the sample means, and are they distinguishable from each othe
 Well done! You've learned how to work with R to calculate basic statistics. We've had you generate a few by hand, but be sure to use the built-in functions in R in the future.
 
 **Extra time?** Try writing some of this code into a new R script on your own computer.
+
+**Want to improve this tutorial?** Report any suggestions/bugs/improvements on Github [here](https://github.com/harris-coding-lab/codinglab/issues)! We're interested in learning from you how we can make this tutorial better.
