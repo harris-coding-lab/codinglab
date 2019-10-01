@@ -82,6 +82,8 @@ For this, we'll review the concept of *vectorization*. This means that an operat
 
 Subtract `this_mean` from the `random_numbers` vector. Did each number in `random_numbers` change?
 ```{r sdvector-setup}
+set.seed(1)
+random_numbers <- rf(1000, 10, 100)
 this_mean <- mean(random_numbers)
 ```
 
@@ -99,7 +101,7 @@ Try to write the formula for standard deviation in R code using the `sqrt()`, `s
 </div>
 
 ```{r question-sd}
-question("What number do you get for `this_mean`, or the standard deviation of `random_numbers`?",
+question("What number do you get for `this_sd`, or the standard deviation of `random_numbers`?",
   answer("0.489704", correct = TRUE),
   answer("0.982"),
   answer("1.018"),
@@ -115,9 +117,9 @@ R also has a built in function for standard deviation. Check if you calculated t
 
 ### Making a Histogram of Our Numbers
 
-What do these random numbers look like, anyway? We can use an R package called ggplot2 to visualize the distribution of our random numbers.
+What do these random numbers look like, anyway? We can use base plotting in R to visualize the distribution of our random numbers.
 
-Run the following code to visualize the original distribution of `random_numbers`.
+Run the following code to visualize the original distribution of `random_numbers` as a **hist**ogram.
 ```{r viz, exercise=TRUE}
 hist(random_numbers)
 ```
@@ -187,7 +189,7 @@ question("What is the value of `normalized_mean`? What is the value of `normaliz
 
 ### Making a Histogram of Z-scores
 
-Let's plot the z-scores and see if our values are still skewed.
+Let's plot the z-scores and see if our values are still skewed. How does this compare to the histogram of `random_numbers`?
 
 ```{r viz2, exercise=TRUE, exercise.setup = "norm-create"}
 hist(normalized_data)
