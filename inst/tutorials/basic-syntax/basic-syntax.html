@@ -261,13 +261,14 @@ What numeric types do you get from doing this? Try running the <code>typeof()</c
 
 <script type="application/json" data-for="htmlwidget-d4b9929a461ed7ea50a7">{"x":{"question":"What values do you get for <code>x_2<\/code> and <code>s_2<\/code>?","answers":[{"option":"x_2 is 1.990, s_2 is 0.932","correct":false,"message":null},{"option":"x_2 is 1.975, s_2 is 0.946","correct":false,"message":null},{"option":"x_2 is 1.990, s_2 is 1.030","correct":true,"message":null},{"option":"x_2 is 1.190, s_2 is 1.030","correct":false,"message":null}],"label":"question-x2","skipStartButton":true,"perQuestionResponseAnswers":true,"perQuestionResponseMessaging":true,"preventUnanswered":true,"displayQuestionCount":false,"displayQuestionNumber":false,"disableRanking":true,"nextQuestionText":"","checkAnswerText":"Submit Answer","allowRetry":true,"randomSortAnswers":false,"json":{"info":{"name":"","main":""},"questions":[{"q":"What values do you get for <code>x_2<\/code> and <code>s_2<\/code>?","a":[{"option":"x_2 is 1.990, s_2 is 0.932","correct":false,"message":null},{"option":"x_2 is 1.975, s_2 is 0.946","correct":false,"message":null},{"option":"x_2 is 1.990, s_2 is 1.030","correct":true,"message":null},{"option":"x_2 is 1.190, s_2 is 1.030","correct":false,"message":null}],"correct":"Correct!","incorrect":"Incorrect."}]}},"evals":[],"jsHooks":[]}</script>
 <div class="tutorial-exercise-support" data-label="t-score-create" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<pre class="text"><code>data_1 &lt;- rnorm(1000, 3)
+<pre class="text"><code>set.seed(1)
+data_1 &lt;- rnorm(1000, 3)
 data_2 &lt;- rnorm(100, 2)
 x_1 &lt;- mean(data_1)
-s_1 &lt;- sd(data_1)^2
+s_1 &lt;- sd(data_1)
 n_1 &lt;- length(data_1)
 x_2 &lt;- mean(data_2)
-s_2 &lt;- sd(data_2)^2
+s_2 &lt;- sd(data_2)
 n_2 &lt;- length(data_2)</code></pre>
 </div>
 <p>Now, you should be able to translate the t-score formula (<span class="math inline">\(\frac{\overline{x}_1 - \overline{x}_2}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}\)</span>) into code, based on the above calculated values.</p>

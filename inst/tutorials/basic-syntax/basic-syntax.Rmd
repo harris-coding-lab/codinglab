@@ -284,13 +284,14 @@ question("What values do you get for `x_2` and `s_2`?",
 ```
 
 ```{r t-score-create}
+set.seed(1)
 data_1 <- rnorm(1000, 3)
 data_2 <- rnorm(100, 2)
 x_1 <- mean(data_1)
-s_1 <- sd(data_1)^2
+s_1 <- sd(data_1)
 n_1 <- length(data_1)
 x_2 <- mean(data_2)
-s_2 <- sd(data_2)^2
+s_2 <- sd(data_2)
 n_2 <- length(data_2)
 ```
 
