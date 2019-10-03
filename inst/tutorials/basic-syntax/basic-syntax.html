@@ -306,6 +306,10 @@ n_2 &lt;- length(data_2)</code></pre>
 <strong>Want to improve this tutorial?</strong> Report any suggestions/bugs/improvements on Github <a href="https://github.com/harris-coding-lab/codinglab/issues">here</a>! We’re interested in learning from you how we can make this tutorial better. 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
+tutorial_event_recorder <- function(...) {
+  cat("Event - ", paste0(capture.output({dput(list(...))}), collapse = " "), "\n")
+}
+options(tutorial.event_recorder = tutorial_event_recorder)
 knitr::opts_chunk$set(echo = FALSE)
 set.seed(1)
 random_numbers <- rf(1000, 10, 100)
