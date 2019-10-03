@@ -91,7 +91,7 @@ this_mean <- mean(random_numbers)
 
 ```
 
-Try to write the formula for standard deviation in R code using the `sqrt()`, `sum()`, and `length()` functions, along with other operators (`^`, `/`, `-`). Assign it to a new variable called `this_sd`.
+Try to write the formula for standard deviation in R code using the `sqrt()`, `sum()`, and `length()` functions, along with other operators (`^`, `/`, `-`). Assign it to a new variable called `this_sd`. Watch out for your parentheses!
 ```{r sd-setup}
 set.seed(1)
 random_numbers <- rf(1000, 10, 100)
