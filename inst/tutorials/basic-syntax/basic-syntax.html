@@ -306,8 +306,17 @@ n_2 &lt;- length(data_2)</code></pre>
 <strong>Want to improve this tutorial?</strong> Report any suggestions/bugs/improvements on Github <a href="https://github.com/harris-coding-lab/codinglab/issues">here</a>! We’re interested in learning from you how we can make this tutorial better. 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
-tutorial_event_recorder <- function(...) {
-  cat("Event - ", paste0(capture.output({dput(list(...))}), collapse = " "), "\n")
+tutorial_event_recorder <- function(..., data = NULL) {
+  if (!is.null(data)) {
+    if(!is.null(data$output)) {
+      output <- as.character(data$output)
+      if(nchar(output) > 150) {
+        output <- paste0(substr(output, 1, 150), "....")
+        data$output <- output
+      }
+    }
+  }
+  cat("Event - ", paste0(capture.output({dput(list(..., data = data))}), collapse = " "), "\n")
 }
 options(tutorial.event_recorder = tutorial_event_recorder)
 knitr::opts_chunk$set(echo = FALSE)
