@@ -22,8 +22,6 @@ tutorial_event_recorder <- function(..., data = NULL) {
 }
 options(tutorial.event_recorder = tutorial_event_recorder)
 knitr::opts_chunk$set(echo = FALSE)
-set.seed(1)
-random_numbers <- rf(1000, 10, 100)
 ```
 
 ## Calculating Mean and Standard Deviation
@@ -38,16 +36,21 @@ set.seed(1)
 random_numbers <- rf(1000, 10, 100)
 ```
 
+```{r random-numbers-create}
+set.seed(1)
+random_numbers <- rf(1000, 10, 100)
+```
+
 Write code that gives you the sum of `random_numbers` and saves it to a new variable called `numbers_sum`:
 
-```{r sum, exercise=TRUE}
+```{r sum, exercise=TRUE, exercise.setup = "random-numbers-create"}
 
 ```
 
 **Note**: You don't automatically see the output of `numbers_sum` when you assign it to a variable. Type `numbers_sum` into the console and run it to see the value that you assigned it.
 
 Write code that gives you the number of items in the `random_numbers` vector and saves it to a new variable called `numbers_count`:
-```{r count, exercise=TRUE}
+```{r count, exercise=TRUE, exercise.setup = "random-numbers-create"}
 
 ```
 
@@ -79,7 +82,7 @@ question("What number do you get for the mean of `random_numbers`?",
 ```
 
 R actually has a built in function to calculate mean for you, so you don't have to remember how to build it from scratch each time! Check your above answer by using the `mean()` function on the `random_numbers` vector.
-```{r mean2, exercise=TRUE}
+```{r mean2, exercise=TRUE, exercise.setup = "random-numbers-create"}
 
 ```
 
@@ -131,7 +134,7 @@ question("What number do you get for `this_sd`, or the standard deviation of `ra
 ```
 
 R also has a built in function for standard deviation. Check if you calculated the standard deviation correctly by using the `sd()` function on the `random_numbers` vector.
-```{r sd2, exercise=TRUE}
+```{r sd2, exercise=TRUE, exercise.setup = "random-numbers-create"}
 
 ```
 
@@ -140,7 +143,7 @@ R also has a built in function for standard deviation. Check if you calculated t
 What do these random numbers look like, anyway? We can use base plotting in R to visualize the distribution of our random numbers.
 
 Run the following code to visualize the original distribution of `random_numbers` as a **hist**ogram.
-```{r viz, exercise=TRUE}
+```{r viz, exercise=TRUE, exercise.setup = "random-numbers-create"}
 hist(random_numbers)
 ```
 
