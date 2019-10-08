@@ -31,6 +31,8 @@ In this exercise, we will calculate the mean of a vector of random numbers. We w
 
 We can run the following code to create a vector of 1000 random numbers. The function `set.seed()` ensures that the process used to generate random numbers is the same across computers.
 
+**Note**: `rf()` is a R command we use to generate 1000 random numbers according to the F distribution, and `10` and `100` are parameters that specify how "peaked" the distribution is.
+
 ```{r random-numbers-code, echo=TRUE, eval=FALSE}
 set.seed(1)
 random_numbers <- rf(1000, 10, 100)
@@ -190,6 +192,8 @@ normalized_data <- (random_numbers - this_mean) / this_sd
 ```
 
 Take the mean of `normalized_data` and assign it to a variable called `normalized_mean`.
+
+**Note**: If you see something that ends in "e-16", that means that it's a very small decimal number (16 places to the right of the decimal point), and is essentially 0.
 ```{r norm-mean, exercise=TRUE, exercise.setup = "norm-create"}
 
 ```
