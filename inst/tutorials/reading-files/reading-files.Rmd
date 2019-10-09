@@ -27,7 +27,7 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 
 ### Data Cleaning
 
-We've provided a clean dataset of student loan data for you for this assignment. We ran the following code on this [student loan Excel dataset](https://github.com/harris-coding-lab/codinglab/raw/master/inst/tutorials/reading-files/www/area_report_by_year.xlsx) (click to download to your computer) to get a clean version, which you can [download here](https://github.com/harris-coding-lab/codinglab/raw/master/inst/tutorials/reading-files/www/student_loan_debt.csv).
+We've provided a clean dataset of student loan data for you for this assignment. We ran the following code on this [student loan Excel dataset](https://github.com/harris-coding-lab/codinglab/raw/master/inst/tutorials/reading-files/www/area_report_by_year.xlsx) (click to download to your computer) to get a clean version, which you can [download here](www/student_loan_debt.csv).
 
 The original student loan data looks like this:
 
