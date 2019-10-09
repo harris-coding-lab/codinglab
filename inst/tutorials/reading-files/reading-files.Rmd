@@ -27,7 +27,7 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 
 ### Data Cleaning
 
-We've provided a clean dataset of student loan data for you for this assignment. We ran the following code on this [student loan Excel dataset](https://github.com/harris-coding-lab/codinglab/raw/master/inst/tutorials/reading-files/www/area_report_by_year.xlsx) (click to download to your computer) to get a clean version, which you can [download here](www/student_loan_debt.csv).
+We've provided a clean dataset of student loan data for you for this assignment. We ran the following code on this [student loan Excel dataset](www/area_report_by_year.xlsx) (click to download to your computer) to get a clean version, which you can [download here](www/student_loan_debt.csv).
 
 The original student loan data looks like this:
 
@@ -274,7 +274,7 @@ question("What is the mean per capita debt in 2018, excluding Puerto Rico?",
 
 Our analysis is close now! One thing to note: we took an average of averages so our per capita estimate may be wrong. We saw that DC had very high debt levels. However, it has a small population compared to the states.
 
-To tackle this, we'll use a population dataset from the same spreadsheet. We clean it with the following code, which is similar to what we did before. Here's the [cleaned dataset](https://github.com/harris-coding-lab/codinglab/raw/master/inst/tutorials/reading-files/www/population.csv) (click to download the csv).
+To tackle this, we'll use a population dataset from the same spreadsheet. We clean it with the following code, which is similar to what we did before. Here's the [cleaned dataset](www/population.csv) (click to download the csv).
 
 ```{r cleanpop, echo=TRUE, eval=FALSE}
 library(tidyverse)
