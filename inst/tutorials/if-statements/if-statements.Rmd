@@ -225,7 +225,7 @@ quiz(
 ```
 
 Our code assigns `FALSE` to all people who refused to answer the question. It's preferable to label them as `NA`. Adjust the `financially_stable` variable to reflect this non-availablility of the data. Name the resulting tibble `shed_with_financial_stability`.
-```{r incl-nas, exercise=TRUE, exercise.lines = 8}
+```{r incl-nas, exercise=TRUE, exercise.lines=8}
 shed_with_financial_stability <- 
   shed_data %>%
     mutate(
@@ -256,7 +256,10 @@ Variable B11 captures response to the question:
 
 
 Let's start by finding the distribution of trust for the full population. Use the functions `group_by(...) %>% summarize(n = n())` to see the possible answers and the distribution of answers. 
-```{r distribution, exercise = TRUE, exercise.setup = "data-with-fin-stability"}
+
+```{r distribution, exercise = TRUE, exercise.setup = "data-with-fin-stability", exercise.lines=5}
+
+
 ```
 
 <!-- **Extension:** We have not taught the `count(...)` function, but it could replace `group_by(...) %>% summarize(n = n())` above. Try to figure it out if you are doing well with time. -->
@@ -279,7 +282,7 @@ quiz(
 a respondent responds with 6 or higher to the question. Deal with refusal as above.
 2) Use `group_by(financially_stable)` and summarize to find the proportion of trusting people by financial security group.
 
-```{r trust, exercise = TRUE, exercise.setup = "data-with-fin-stability"}
+```{r trust, exercise = TRUE, exercise.setup = "data-with-fin-stability", exercise.lines=5}
 
 ```
 
@@ -302,7 +305,15 @@ such as those who require payday loans, selling things or say "I wouldn't be abl
 for the expense right now". Create an additional level to your financially stable variable
 and repeat the analysis. Does this effect your previous interpretation?
 
-```{r extension,  exercise = TRUE, exercise.setup = "data-with-fin-stability", exercise.lines = 8}
+```{r extension,  exercise = TRUE, exercise.setup = "data-with-fin-stability", exercise.lines=8}
+
+
+
+
+
+
+
+
 
 ```
 
