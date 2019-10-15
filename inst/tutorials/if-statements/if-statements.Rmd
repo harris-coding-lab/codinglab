@@ -176,7 +176,7 @@ Our work will focus on the following question:
 
 Under the hood we read the data like so:
 ```{r read-data, echo=TRUE, eval=FALSE}
-shed_data <- read_dta("shed-data-abridged.dta")
+shed_data <- haven::read_dta("shed_data_abridged.dta")
 ```
 
 Start simple. What are the dimensions of the data? How many rows and columns?
@@ -188,7 +188,7 @@ Start simple. What are the dimensions of the data? How many rows and columns?
 **Hint:** Use `dim()`. 
 </div>
 
-We cannot ask people directly if they are "financially stable" rather one survey question asks how people would pay for a unexpected $400  expense (e.g. hospital bill). There are 9 options, captured in different columns as indicator variables.
+We cannot ask people directly if they are "financially stable" rather one survey question asks how people would pay for a unexpected $400  expense (e.g. hospital bill). There are 9 options, captured in different columns as indicator variables (1 if answer is yes, 0 if answer is no).
 
 - EF3_a: Put it on my credit card and pay it off in full at the next statement
 - EF3_b: Put it on my credit card and pay it off over time
@@ -203,7 +203,7 @@ We cannot ask people directly if they are "financially stable" rather one survey
 
 We could argue that people who can pay for an expense shock with cash or credit which they pay off in full are financially stable. 
 
-1. Use `mutate` and `ifelse` to add an indicator variable called `financially_stable` that is TRUE if the respondent can pay in cash (EF3_c) or pay with a credit card which they'll pay off at the end of the month (EF3_a) and FALSE otherwise.
+1. Use `mutate` and `ifelse` to add an indicator variable called `financially_stable` that is TRUE if the respondent can pay in cash (`EF3_c`) or pay with a credit card which they'll pay off at the end of the month (`EF3_a`) and FALSE otherwise.
 1. Use `group_by` and `summarize` to determine the number of financially stable people in the data.
 
 ```{r financially_stable, exercise=TRUE}
