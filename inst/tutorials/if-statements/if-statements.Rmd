@@ -30,10 +30,9 @@ shed_data <- read_dta("https://github.com/harris-coding-lab/codinglab/raw/master
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## Warm-up: Gaining comfort with booleans
+## Warm-up: Gaining Comfort with Booleans
 
-### Predict the output of the following statements
-
+Predict the output of the following statements:
 
 ```{r boolean_expr_1, echo=TRUE, eval=FALSE}
 5 != 10
@@ -167,7 +166,7 @@ If you combined all three expressions above with `&` what will the response be?
 **Hint:** You'll need to use `is.na()` along with an `&`
 </div>
 
-## Applying booleans to the Survey of Household Economics Dynamics
+## Applying Booleans to the Survey of Household Economics Dynamics
 
 
 We are going to explore the Survey of Household Economics Dynamics (SHED) by the Federal Reserve. The data file is somewhat large, so we are only providing the columns of interest for this workshop. The data for the workshop is available [here](https://github.com/harris-coding-lab/codinglab/raw/master/inst/tutorials/if-statements/www/shed_data_abridged.dta ). The original data including a code book can be found [here](https://www.federalreserve.gov/consumerscommunities/shed_data.htm).
@@ -266,7 +265,7 @@ Let's start by finding the distribution of trust for the full population. Use th
 
 ```{r quiz-refused}
 quiz(
-  question("What is the modal response?",
+  question("What is the modal (most common) response?",
     answer("7"),
     answer("6"),
     answer("5", correct=TRUE), 
@@ -278,7 +277,7 @@ quiz(
 )
 ```
 
-1) Create a new indictor variable called `trusting` which is `TRUE` when
+1) Create a new indicator variable called `trusting` which is `TRUE` when
 a respondent responds with 6 or higher to the question. Deal with refusal as above.
 2) Use `group_by(financially_stable)` and summarize to find the proportion of trusting people by financial security group.
 
