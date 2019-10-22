@@ -100,6 +100,14 @@ question_parsons(
   "sample_mean <- mean(rnorm(n, mean = 0, sd = 5))",
   "estimates <- bind_rows(estimates, c(n = n, sample_mean = sample_mean))",
   "}"
+  ), correct = TRUE),
+  answer(c(
+  "estimates <- tibble(n = integer(), sample_mean = double())",
+  "sample_sizes <- seq(1, 30, 1)",
+  "for (n in sample_sizes) {",
+  "sample_mean <- mean(rnorm(n, mean = 0, sd = 5))",
+  "estimates <- bind_rows(estimates, c(n = n, sample_mean = sample_mean))",
+  "}"
   ), correct = TRUE)
 )
 ```
