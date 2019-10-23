@@ -43,7 +43,8 @@ question_parsons(
    "for (i in seq_along(a)) {",
   "res[i] <- a[i] + b[i]",
   "}"
-  ), correct = TRUE)
+  ), correct = TRUE),
+ submit_button = "Check answer"
 )
 ```
 
@@ -53,16 +54,19 @@ question_parsons(
    "}",
   "mutate(count = as.numeric(count))",
   "for (file in all_files) {",
-  "write_csv(the_data, file = paste0(\"data/\", file))",
-  "the_data <- read_csv(file) %>%"
+  "write_csv(the_data, file = paste0(\"data-output/\", file))",
+  "the_data <- read_csv(file) %>%",
+  "all_files <- list.files(\"data/\", pattern = \"*.csv\", full.names = TRUE)"
  ),
  answer(c(
+  "all_files <- list.files(\"data/\", pattern = \"*.csv\", full.names = TRUE)",
   "for (file in all_files) {",
   "the_data <- read_csv(file) %>%",
   "mutate(count = as.numeric(count))",
-  "write_csv(the_data, file = paste0(\"data/\", file))",
+  "write_csv(the_data, file = paste0(\"data-output/\", file))",
   "}"
-  ), correct = TRUE)
+  ), correct = TRUE),
+ submit_button = "Check answer"
 )
 ```
 
@@ -79,7 +83,8 @@ question_parsons(
   "for (i in seq_along(df)) {",
   "output[[i]] <- median(df[[i]])",
   "}"
-  ), correct = TRUE)
+  ), correct = TRUE),
+ submit_button = "Check answer"
 )
 ```
 
@@ -108,7 +113,8 @@ question_parsons(
   "sample_mean <- mean(rnorm(n, mean = 0, sd = 5))",
   "estimates <- bind_rows(estimates, c(n = n, sample_mean = sample_mean))",
   "}"
-  ), correct = TRUE)
+  ), correct = TRUE),
+ submit_button = "Check answer"
 )
 ```
 
