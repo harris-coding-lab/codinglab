@@ -27,13 +27,15 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 
 ### Data Cleaning
 
-We've provided a clean dataset of student loan data for you for this assignment. We ran the following code on this [student loan Excel dataset](www/area_report_by_year.xlsx) (click to download to your computer) to get a clean version, which you can [download here](www/student_loan_debt.csv).
+We've provided a clean dataset of student loan data for you for this assignment. We ran the following code on this [student loan Excel dataset](www/area_report_by_year.xlsx) (click to download to your computer) to get a clean version, which you can [download here as a CSV](www/student_loan_debt.csv).
 
 The original student loan data looks like this:
 
+**Note**: A sample header and value have been highlighted in orange for you to follow how the data changes as we restructure it.
+
 ![](images/01_excel.jpg){#id .class width=50% height=50%}
 
-Here's the code we wrote to clean our data:
+Here's the code we wrote to clean our data. We're including it here so you can see what our data prep looks like, but we don't expect you to know all of the functions in here yet! (You'll learn more about a few of them on the next page.)
 
 **Note**: Each of these statements is separated by the "pipe", or `%>%`, which you can read as the word "then". Read the Excel file, *then* filter values, *then* transform the data... 
 
@@ -44,7 +46,7 @@ library(readxl)
 setwd("~/Downloads")
 student_loan_debt <- read_xlsx("area_report_by_year.xlsx", sheet = "studentloan", skip = 3) %>%
   filter(state != "allUS") %>%
-  gather(key = year, value = per_capita_student_debt, -state) %>%
+  gather(key = year, value = per_capita_student_debt, -state) %>% 
   mutate(year = str_sub(year, 4, 7),
          year = as.numeric(year))
 
@@ -66,8 +68,6 @@ student_loan_debt <- read_xlsx("area_report_by_year.xlsx", sheet = "studentloan"
 ```
 
 1. We **set our working directory** to the folder where we downloaded `"area_report_by_year.xlsx"`, so that our `read_xlsx` function can find the data. We specify the sheet in the Excel workbook we want to read, and we skip the first 3 rows in the sheet, because the data we're interested in starts on line 4.
-
-**Note**: A sample header and value have been highlighted in orange for you to follow how the data changes as we restructure it.
 
 ![](images/02_wide.jpg){#id .class width=50% height=50%}
 
@@ -95,7 +95,7 @@ mutate(year = str_sub(year, 4, 7),
 ![](images/04_final.jpg){#id .class width=50% height=50%}
 
 ```{r question-types}
-question("What type did the `year` column use to be? What is the new type of the `year` column?",
+question("What was the original type of the `year` column? What is the new type of the `year` column?",
   answer("`year` was logical, and now is numeric"),
   answer("`year` was character, and now is numeric", correct = TRUE),
   answer("`year` was numeric, and now is character"),
@@ -132,7 +132,7 @@ To look at your data after reading it in, you can use a `tidyverse` function cal
 
 ### Arranging Data
 
-We can use the `arrange()` function from `dplyr` to sort the student loan data. The syntax is `arrange(data, variable)`. Can you sort the other way?
+We can use the `arrange()` function from `dplyr` to sort the student loan data. The syntax is `arrange(data, variable)`. Arrange the data in `student_loan_debt` by `per_capita_student_debt`. (Can you sort the other way?)
 ```{r arrange, exercise=TRUE, exercise.setup = "data-load"}
 
 
@@ -151,19 +151,19 @@ quiz(caption = "",
     answer("WY"),
     allow_retry = TRUE
   ),
-  question("How much was the lowest per capita dept in 2003?",
+  question("How much was the lowest per capita debt in 2003?",
     answer("450"),
     answer("500", correct = TRUE),
     answer("550"),
     answer("600"),
     allow_retry = TRUE
   ),
-  question("How much did the average borrower owe in that state-year?",
-    answer("15090"),
-    answer("14020"),
-    answer("13780"),
-    answer("13320", correct = TRUE),
-    allow_retry = TRUE
+  question("How much was the highest per capita debt in 2018?",
+  answer("15090"),
+  answer("14020"),
+  answer("13780"),
+  answer("13320", correct = TRUE),
+  allow_retry = TRUE
   )
 )
 ```
@@ -247,6 +247,7 @@ question("What is the minimum and mean per capita debt in 2011?",
   allow_retry = TRUE
 )
 ```
+
 
 ### Dealing with Missing Data
 
